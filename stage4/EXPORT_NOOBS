@@ -1,0 +1,2 @@
+NOOBS_NAME="Raspbian Lite with viktorgino's headunit"
+NOOBS_DESCRIPTION="A port of Debian Stretch with viktorgino's headunit pre-installed for the Raspberry Pi (minimal version)"
