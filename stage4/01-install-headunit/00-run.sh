@@ -1,7 +1,36 @@
 #!/bin/bash -e
 
-#Only compile if the directory doesn't exists, thus reducing recompile times
+#Compile qt-gstreamer
+if [ ! -d ${ROOTFS_DIR}/opt/qt-gstreamer ] || [ ! -z ${BUILD_QTGSTREAMER+x} ]; then    
+    log "Compiling qt-gstreamer..."
+on_chroot << EOF
+    cd /opt
 
+    #Clone QtGstreamer
+    if [ -d "qt-gstreamer" ]; then
+        cd qt-gstreamer
+        git pull
+    else
+        git clone git://anongit.freedesktop.org/gstreamer/qt-gstreamer
+        cd qt-gstreamer
+    fi
+
+    #Create build dir
+    mkdir build
+    cd build
+
+    #cmake QtGstreamer
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib/arm-linux-gnueabihf -DCMAKE_INSTALL_INCLUDEDIR=include -DQT_VERSION=5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-std=c++11
+
+    #Make and install QtGstreamer
+    make -j6
+    sudo make install
+EOF
+else
+    log "Skipping qt-gstreamer compilation"
+fi
+
+#Compile and install headunit-desktop
 if [ ! -d ${ROOTFS_DIR}/opt/headunit-desktop ] || [ ! -z ${BUILD_HEADUNIT+x} ]; then    
     log "Compiling headunit-desktop..."
 on_chroot << EOF
@@ -24,4 +53,6 @@ on_chroot << EOF
     qmake -config release
     make -j4
 EOF
+else
+    log "Skipping headunit-desktop compilation"
 fi 
