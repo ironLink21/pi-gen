@@ -139,19 +139,13 @@ maintenance and allows for more easy customization.
    you were looking for something between truly minimal and Raspbian-Lite,
    here's where you start trimming.
 
- - **Stage 3** - desktop system.  Here's where you get the full desktop system
-   with X11 and LXDE, web browsers, git for development, Raspbian custom UI
-   enhancements, etc.  This is a base desktop system, with some development
-   tools installed.
+ - **Stage 3** - headunit prerequisites. Installs all the packages that are needed to compile and run headunit.
 
- - **Stage 4** - Raspbian system meant to fit on a 4GB card.  More development
-   tools, an email client, learning tools like Scratch, specialized packages
-   like sonic-pi, system documentation, office productivity, etc.  This is the
-   stage that installs all of the things that make Raspbian friendly to new
-   users.
+ - **Stage 4** - qt-gstreamer and headunit-desktop. Compile and install both qt-gstreamer and headunit-desktop. Also create the ZIP file with the image file and the NOOBS installer.
 
- - **Stage 5** - The official Raspbian Desktop image. Right now only adds
-   Mathematica.
+### Recompile headunit or qt-gstreamer
+
+To recompile headunit-desktop run the build script with the `-h` or `--headunit` flag, to recompile qt-gstreamer run the build script with the `-g` or `--qtgstreamer` flag.
 
 ### Stage specification
 
@@ -173,3 +167,4 @@ sudo ./build.sh  # or ./build-docker.sh
 If you wish to build further configurations upon (for example) the lite
 system, you can also delete the contents of `./stage3` and `./stage4` and
 replace with your own contents in the same format.
+
