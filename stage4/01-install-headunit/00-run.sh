@@ -1,7 +1,10 @@
 #!/bin/bash -e
 
 #Only compile if the directory doesn't exists, thus reducing recompile times
-if [ ! -d /opt/headunit-desktop ] || [ ! -z ${BUILD_HEADUNIT+x} ]; then
+
+if [ ! -d ${ROOTFS_DIR}/opt/headunit-desktop ] || [ ! -z ${BUILD_HEADUNIT+x} ]; then    
+    log "Compiling headunit-desktop..."
+on_chroot << EOF
     cd /opt
 
     ### Build headunit 
@@ -20,4 +23,5 @@ if [ ! -d /opt/headunit-desktop ] || [ ! -z ${BUILD_HEADUNIT+x} ]; then
     make clean
     qmake -config release
     make -j4
+EOF
 fi 

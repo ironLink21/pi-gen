@@ -158,6 +158,23 @@ export QUILT_NO_DIFF_INDEX=1
 export QUILT_NO_DIFF_TIMESTAMPS=1
 export QUILT_REFRESH_ARGS="-p ab"
 
+while [[ $# -gt 0 ]]
+do
+
+case $1 in
+    -h|--headunit)
+    export BUILD_HEADUNIT=1
+    ;;
+    -g|--qtgstreamer)
+    export BUILD_QTGSTREAMER=1
+    ;;
+    *)
+            # unknown option
+    ;;
+esac
+shift # past argument or value
+done
+
 source ${SCRIPT_DIR}/common
 source ${SCRIPT_DIR}/dependencies_check
 

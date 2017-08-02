@@ -1,7 +1,10 @@
 #!/bin/bash -e
 
 #Only compile if the directory doesn't exists, thus reducing recompile times
-if [ ! -d /opt/qt-gstreamer ] || [ ! -z ${BUILD_QTGSTREAMER+x} ]; then
+
+if [ ! -d ${ROOTFS_DIR}/opt/qt-gstreamer ] || [ ! -z ${BUILD_QTGSTREAMER+x} ]; then    
+    log "Compiling qt-gstreamer..."
+on_chroot << EOF
     cd /opt
 
     #Clone QtGstreamer
@@ -23,4 +26,5 @@ if [ ! -d /opt/qt-gstreamer ] || [ ! -z ${BUILD_QTGSTREAMER+x} ]; then
     #Make and install QtGstreamer
     make -j6
     sudo make install
-fi
+EOF
+fi 
