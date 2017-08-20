@@ -1,7 +1,6 @@
-qt5-default qml-module-qtquick2 qtdeclarative5-dev qtmultimedia5-dev libqt5multimedia5-plugins qml-module-qtquick* qml-module-qtmultimedia qml-module-qt-labs-settings qml-module-qt-labs-folderlistmodel
-build-essential cmake protobuf-compiler
-libusb-1.0-0-dev libssl-dev openssl libglib2.0-dev libgstreamer1.0-dev gstreamer1.0-plugins-base-apps gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-alsa libboost-dev libgstreamer-plugins-base1.0-dev libudev-dev libtag1-dev libprotobuf-dev
-libfaad-dev libfftw3-dev librtlsdr-dev libusb-1.0-0-dev mesa-common-dev libglu1-mesa-dev zlib1g-dev  portaudio19-dev libsndfile1-dev libsamplerate0-dev 
+gstreamer1.0-x gstreamer1.0-omx gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-alsa gstreamer1.0-libav
+xpdf gtk2-engines alsa-utils
+desktop-base
 git
 libgl1-mesa-dri
 xorg xinit
