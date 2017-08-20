@@ -164,9 +164,15 @@ do
 case $1 in
     -h|--headunit)
     export BUILD_HEADUNIT=1
+	echo "Will be rebuilding headunit"
     ;;
     -g|--qtgstreamer)
     export BUILD_QTGSTREAMER=1
+	echo "Will be rebuilding qt-gstreamer"
+    ;;
+    -c|--qtcharts)
+    export BUILD_QTCHARTS=1
+	echo "Will be rebuilding qtcharts"
     ;;
     *)
             # unknown option
